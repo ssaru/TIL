@@ -34,7 +34,7 @@ non-dedicated commodity cluster들을 효율적으로 사용하는 것은 어렵
 
 
 
-![1545636797967](C:\Users\KETI-Windows-Martin\AppData\Roaming\Typora\typora-user-images\1545636797967.png)
+![figure 1](https://user-images.githubusercontent.com/13328380/50394211-6cea4e00-079f-11e9-808a-07f25aced426.PNG)
 
 
 
