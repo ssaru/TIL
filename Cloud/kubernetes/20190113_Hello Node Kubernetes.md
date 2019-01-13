@@ -44,7 +44,7 @@ Kubernetes는 구글이 15여년 동안 걸친 대규모 운영 워크로드 운
 - 복잡한 리눅스 어플리케이션을 컨테이너로 묶어서 실행할 수 있음
 - 개발, 테스트, 서비스 환경을 하나로 통일하여 효율적으로 관리할 수 있음
 
-![vms-and-containers](C:\Users\Martin\Documents\dev\TIL\Cloud\kubernetes\51082023-6ff2b180-1741-11e9-9f45-3f19ec71eb77.jpg)
+![vms-and-containers](https://user-images.githubusercontent.com/13328380/51085227-8e749f00-1779-11e9-9723-ac81bff218bc.jpg)
 
 
 
