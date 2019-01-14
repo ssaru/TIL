@@ -63,7 +63,7 @@ IDC 2017의 연구에 따르면, 상업적인 혹은 백업, 탄력성, 규제�
 
 ​    
 
-# Overview Seldon-Core
+## Overview Seldon-Core
 
 Seldon Core은 아래의 그림과 같이 3단계로 작업이 진행된다.
 
@@ -77,9 +77,43 @@ Seldon Core은 아래의 그림과 같이 3단계로 작업이 진행된다.
 
 ![steps](https://user-images.githubusercontent.com/13328380/50888497-23556080-1439-11e9-9a8e-92d323cba094.png)
 
+​    
+
+## Install Seldon-Core
+
+Seldon-Core를 설치하는 방법에 대해서는 [가이드 문서](https://github.com/SeldonIO/seldon-core/blob/master/docs/install.md)에 잘 나와있으니, 이를 이용하여 설치하면 된다.
+
+​    
+
+## Wrap Your model
+
+만약에 Serving을 원하는 컴포넌트(딥러닝 모델)가 있다면, 이를 Seldon-Core의 MicroService API와 상호작용이 되는 Docker Conatainer로 wrapping되어야 한다.
 
 
 
+Seldon-Core는 다른 언어 및 프레임워크로 이미 작성된 Machine Learning 프로젝트 코드들을 Seldon-Core내부에서 작동될 수 있도록 Docker Container를 쉽게 만들어주는 wrapper를 제공한다. 현재 Seldon-Core는 RedHat의 Source-to-Image(S2I)라는 tool을 추천한다.
+
+​    
+
+## Define Runtime Service Graph
+
+Kubernetes에서 원하는 Machine Learning Graph를 실행하려면 만들어진 컴포넌트를 어떻게 Service Graph와 맞춰서 표현할것인지에 대해서 정의해야한다. 이러한 것은  [SeldonDeployment Kubernetes Custom resource](https://github.com/SeldonIO/seldon-core/blob/master/docs/reference/seldon-deployment.md)에서 정의된다.
+
+
+
+해당 내용에 대한 가이드는 [A guide to constructing this custom resource service graph is provided](https://github.com/SeldonIO/seldon-core/blob/master/docs/inference-graph.md)를 참조하자.
+
+
+
+![graph](https://user-images.githubusercontent.com/13328380/51100540-ea8f0000-1819-11e9-8106-a5ddb4fa45ff.png)
+
+
+
+​    
+
+## Deploy and Serve Predictions
+
+다른 서비스들을 kubernetes 올리는 것과 같이 ML 서비스를 `kubectl` 명령어를 이용해서 배포할 수 있다. 해당 내용은 [여기](https://github.com/SeldonIO/seldon-core/blob/master/docs/deploying.md)를 참조한다.
 
 
 
