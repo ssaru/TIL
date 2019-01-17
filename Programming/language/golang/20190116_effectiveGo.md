@@ -178,6 +178,8 @@ var (
 )
 ```
 
+> 이는  `inputCount`, `outputCount`, `errorCount` 변수가 자동으로 `countLock`에 묶이는 것이 아니라, 3가지 변수가 `countLock`과 연관있는 변수라는 것을 내포하고 있는 문법적 표현이다. 즉, 가독성을 올려주는데 목적이 있지 그룹핑 그 외의 기능을 가지고 있진 않다.
+
 ​    
 
 ## 명칭;Names
