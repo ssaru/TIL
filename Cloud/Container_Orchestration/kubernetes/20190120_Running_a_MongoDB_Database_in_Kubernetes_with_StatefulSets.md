@@ -44,6 +44,18 @@ StatefulSet Object를 시용해서 Kubernetes Engine에서 MongoDB replicaSet를
 ```bash
 $ cat googlecloud_ssd.yaml
 >
+#       Copyright 2017, Google, Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http:#www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:
@@ -240,6 +252,20 @@ MongoDB에 연결된 것을 통해서 이제 우리는 `REPL`환경에 진입했
 
 ```bash
 $ rs.initiate()
+>
+{
+        "info2" : "no configuration specified. Using a default configuration for the set",
+        "me" : "localhost:27017",
+        "ok" : 1,
+        "operationTime" : Timestamp(1547982309, 1),
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1547982309, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        }
+}
 ```
 
 
@@ -251,38 +277,41 @@ $ rs.conf()
 >
 rs0:PRIMARY> rs.conf()
 {
-    "_id": "rs0",
-    "version": 1,
-    "protocolVersion": NumberLong(1),
-    "members": [
-        {
-            "_id": 0,
-            "host": "10.160.2.5:27017",
-            "arbiterOnly": false,
-            "buildIndexes": true,
-            "hidden": false,
-            "priority": 1,
-            "tags": {
+        "_id" : "rs0",
+        "version" : 1,
+        "protocolVersion" : NumberLong(1),
+        "writeConcernMajorityJournalDefault" : true,
+        "members" : [
+                {
+                        "_id" : 0,
+                        "host" : "localhost:27017",
+                        "arbiterOnly" : false,
+                        "buildIndexes" : true,
+                        "hidden" : false,
+                        "priority" : 1,
+                        "tags" : {
 
-            },
-            "slaveDelay": NumberLong(0),
-            "votes": 1
-        },
-           "settings": {
-        "chainingAllowed": true,
-        "heartbeatIntervalMillis": 2000,
-        "heartbeatTimeoutSecs": 10,
-        "electionTimeoutMillis": 10000,
-        "catchUpTimeoutMillis": 2000,
-        "getLastErrorModes": {
+                        },
+                        "slaveDelay" : NumberLong(0),
+                        "votes" : 1
+                }
+        ],
+        "settings" : {
+                "chainingAllowed" : true,
+                "heartbeatIntervalMillis" : 2000,
+                "heartbeatTimeoutSecs" : 10,
+                "electionTimeoutMillis" : 10000,
+                "catchUpTimeoutMillis" : -1,
+                "catchUpTakeoverDelayMillis" : 30000,
+                "getLastErrorModes" : {
 
-        },
-        "getLastErrorDefaults": {
-            "w": 1,
-            "wtimeout": 0
-        },
-        "replicaSetId": ObjectId("58ace74774ebb9712eb31d3f")
-    }
+                },
+                "getLastErrorDefaults" : {
+                        "w" : 1,
+                        "wtimeout" : 0
+                },
+                "replicaSetId" : ObjectId("5c4455e515e5ab7d52a53f86")
+        }
 }
 ```
 
