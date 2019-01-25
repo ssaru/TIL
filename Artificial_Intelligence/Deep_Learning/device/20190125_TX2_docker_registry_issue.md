@@ -40,7 +40,7 @@ $ sudo service docker restart
 
 
 
-    ### /etc/docker/daemon.json DNS 정보 변경
+### /etc/docker/daemon.json DNS 정보 변경
 
 
 
