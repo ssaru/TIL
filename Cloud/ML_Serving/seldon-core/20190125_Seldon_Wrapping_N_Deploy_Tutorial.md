@@ -12,13 +12,13 @@
 
 ### S2I 설치
 
-[Source-to-Image](https://github.com/openshift/source-to-image)는 소스 코드에서 Docker이미지를 생성해주는 툴킷입니다. 조금 더 자세한 설명은 추후 시간이 될 때, 진행하도록 하도록 하겠다. Seldon Core는 [S2I](https://github.com/openshift/source-to-image)를 이용해서 딥러닝 모델을 Seldon Core에 맞게끔 Docker Image로 만들어준다.
+[Source-to-Image](https://github.com/openshift/source-to-image)는 소스 코드에서 Docker이미지를 생성해주는 툴킷이다. 조금 더 자세한 설명은 추후 시간이 될 때, 진행하도록 하도록 하겠다. Seldon Core는 [S2I](https://github.com/openshift/source-to-image)를 이용해서 딥러닝 모델을 Seldon Core에 맞게끔 Docker Image로 만들어준다.
 
 
 
 [S2I](https://github.com/openshift/source-to-image)를 먼저 설치하자. [S2I](https://github.com/openshift/source-to-image) Github 저장소에 설치하는 방법을 자세히 설명해두었으니, 자세한 내용이 궁금하면 참고하도록 하자.
 
-
+​    
 
 #### Installation
 
@@ -136,8 +136,6 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mini
   && chmod +x minikube
 $ sudo cp minikube /usr/local/bin && rm minikube
 ```
-
-
 
 ​    
 
@@ -324,7 +322,7 @@ if __name__ == "__main__":
 
 여기서 Seldon-Core로 배포하기 위해서 중요한 것은 아래와 같다.
 
-
+​    
 
 ##### Model Input/Output
 
@@ -444,8 +442,6 @@ class DeepMnist(object):
   ```python
   sess = tf.Session()
   ```
-
-  
 
 - 가중치 파일 로드
 
@@ -593,7 +589,7 @@ Loading cached images from config file.
 
 ​     
 
-#### Clusterrolebinding Object 생성
+#### Cluster role을 서비스 계정에 바인딩
 
 ```bash
 $ kubectl create clusterrolebinding kube-system-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
