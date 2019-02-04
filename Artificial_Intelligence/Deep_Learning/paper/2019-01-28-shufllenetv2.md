@@ -53,7 +53,7 @@
 
 
 
-    ![table1](https://user-images.githubusercontent.com/13328380/52106111-d4b07600-2634-11e9-9172-59b0774a9772.PNG)
+![table1](https://user-images.githubusercontent.com/13328380/52106111-d4b07600-2634-11e9-9172-59b0774a9772.PNG)
 
 
 
