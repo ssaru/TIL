@@ -106,15 +106,11 @@
 > 
 > 추후에 make할 때, 해당 KUBECONFIG이 없어서 KIND로 작동이 안되는 경우가 있다.
 
-
-
 # Minikube에 private registry 서버 구축 및 port-forwarding
 
 > host os에 local private registry를 구축하게 되면, minikube에서 host os의 local registry 서버에 접근할 수 없음.
 > 
 > 따라서 [여기](https://blog.hasura.io/sharing-a-local-registry-for-minikube-37c7240d0615/)를 참조하여 minikube안에서 docker private registry 서버를 구축하고, 이를 host os에 port-forwarding하는 방법으로 사용함
-
-
 
 - 아래의 `yaml` 파일을 사용하여, `kube-registry.yaml`파일을 생성함.
 
@@ -269,23 +265,17 @@ spec:
     [1]  + 18237 running    kubectl port-forward --namespace kube-system  5000:5000 --v=0 > /dev/null
     ```
 
-
-
 # Docker private registry 서버 구축
 
 > host os에 local private registry를 구축하게 되면, minikube에서 host os의 local registry 서버에 접근할 수 없음.
 > 
 > 따라서 [여기](https://blog.hasura.io/sharing-a-local-registry-for-minikube-37c7240d0615/)를 참조하여, kubernetes안에 registry 서버를 구성하여 local 개발환경을 구축하는 방향을 생각 중
-
-
-
+> 
 > TODO
 > 
 > `ifconfig`을 통해 host OS의 IP를 확인 후, 해당 IP SSH 접속을 확인함.
 > 
 > host OS의 registry server를 minikube가 사용할 수 있는 방법에 대해서 알아봐야함
-
-
 
 - 디렉토리 생성
 
@@ -294,6 +284,10 @@ spec:
 - registry 설정파일 생성
 
   `/opt/registry/config/cred_config.yml`
+
+  ip는 `ipconfig`으로 확인한 자기자신의 ip를 입력한다.
+
+  > `127.0.0.1` 혹은 `localhost`는 하지 않는다.
 
   > `/opt/registry/`에 대한 디렉토리를 변경해야하는 경우, 해당 파일은 건들이지 않는다.
   > 
@@ -405,8 +399,6 @@ spec:
 
   - 레퍼런스는 [여기](https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2)를 참조
 
-
-
 # OpenFx 컴파일
 
 ## gateway
@@ -427,10 +419,8 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
 
     ```bash
     $ make build
-    $ make push 
+    $ make push
     ```
-
-
 
 ## watcher
 
@@ -445,6 +435,7 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
   > 현재 go Dockerfile build시, 아래와 같은 에러가 출력됨. protobuf 버전 업그레이드로 인해 컴파일이 안되는 듯 함
   > 
   > Step 7/9 : RUN go build -o fxwatcher .
+  > 
   >  ---> Running in 8b68b098754d
   > 
   > github.com/keti-openfx/openfx-watcher/go/pb
@@ -452,7 +443,6 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
   > pb/fxwatcher.pb.go:25:11: undefined: "github.com/keti-openfx/openfx-watcher/go/vendor/github.com/golang/protobuf/proto".ProtoPackageIsVersion3
 
   - protobuf와 protoc을 최신으로 upgrade한다.
-
     - https://github.com/protocolbuffers/protobuf/releases
 
     - protoc
@@ -500,8 +490,6 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
       $ pip3 install grpcio-tools
       ```
 
-
-
 ## CLI
 
 - openfx-cli clone 후, 아래와 같은 절차를 따른다.
@@ -515,19 +503,13 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
 
 - $GOPATH/bin 에보면 openfx-cli 실행파일을 확인할 수 있다.
 
-
-
 ## Runtime
 
 - Runtime은 단순히 github에 push하는 역활만 하므로 생략
 
-
-
 ## openfx yaml(kubernetes specfile)
 
 - 이 또한 Kubernetes 배포를 위한 yaml 파일을 github에 push 하므로 생략한다.
-
-
 
 ### REFERENCE
 
@@ -556,9 +538,3 @@ Makefile을 이용해서 docker image를 생성하고, 생성한 private reposit
 [12. Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
 
 [13. kubectl cheetsheet](https://kubernetes.io/ko/docs/reference/kubectl/cheatsheet/#%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AD%EC%A0%9C)
-
-
-
-
-
-
